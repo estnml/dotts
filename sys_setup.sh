@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 development_packages=(
     "base-devel"
     "git"
@@ -10,9 +11,15 @@ development_packages=(
 
 
 hardware_packages=(
+    "vulkan-icd-loader"
+    "vulkan-validation-layers"
+    "vulkan-mesa-layers"
+    "lib32-vulkan-mesa-layers "
+    "vulkan-tools"
     "nvidia-dkms"         
     "nvidia-utils"        
     "libva-nvidia-driver"
+    "libva-utils"
     "nvidia-prime"
     "cuda"
 
@@ -20,6 +27,7 @@ hardware_packages=(
     "vulkan-intel" 
     "libva-intel-driver" 
     "intel-media-driver" 
+    "xf86-video-intel"
 
     "libva-vdpau-driver"
     "ffmpeg"              
@@ -28,7 +36,7 @@ hardware_packages=(
     "bluez"
     "bluez-utils"
 
-
+    
 
     "tlp"                 
     "thermald"           
@@ -60,6 +68,7 @@ system_apps=(
     "xdg-desktop-portal-gtk"
 
     "xwayland-satellite"
+    "brightnessctl"
 )
 
 
@@ -78,6 +87,8 @@ user_apps=(
     "fastfetch"
     "nvtop"
     "ttf-jetbrains-mono"
+    "ttf-dejavu"
+    "ttf-liberation"
     "ripgrep"
     "yt-dlp"
 )
@@ -103,7 +114,7 @@ fi
 
 
 if [ ${#unique_packages[@]} -eq 0 ]; then
-    echo "Kurulacak paket bulunamadı."
+    echo "Kurulacak paket bulunamadi."
     exit 0
 fi
 
@@ -114,8 +125,10 @@ echo "toplam ${#unique_packages[@]} unique paket var: ${unique_packages[@]}"
 pacman -S --noconfirm "${unique_packages[@]}"
 
 if [ $? -eq 0 ]; then
-    echo "Paket kurulumu tamamlandı."
+    echo "Paket kurulumu tamamlandi."
+    echo "Gerekli servisleri calistir."
 else
-    echo "Hata: Pacman komutu başarısız oldu."
+    echo "Hata: Pacman komutu başarisiz oldu."
+    echo "pacman 32bit paketleri indiremiyor olabilir, repo'lari kontrol et."
     exit 1
 fi

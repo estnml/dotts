@@ -27,6 +27,11 @@ environment {
     VDPAU_DRIVER "nvidia"
     WLR_RENDERER "vulkan"
     MOZ_ENABLE_WAYLAND "1"
+
+
+    // DRI_PRIME "0"
+    // __EGL_VENDOR_LIBRARY_FILENAMES "/usr/share/glvnd/egl_vendor.d/50_mesa.json"
+    // __GLX_VENDOR_LIBRARY_NAME "mesa"
 }
 
 
@@ -36,7 +41,7 @@ environment {
 workspace "common" {}
 workspace "gaming" {}
 workspace "browser" {}
-workspace "art" {}
+workspace "work" {}
 
 
 
