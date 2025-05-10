@@ -1,0 +1,148 @@
+@define-color rosewater #f2d5cf;
+@define-color flamingo #eebebe;
+@define-color pink #f4b8e4;
+@define-color mauve #ca9ee6;
+@define-color red #e78284;
+@define-color maroon #ea999c;
+@define-color peach #ef9f76;
+@define-color yellow #e5c890;
+@define-color green #a6d189;
+@define-color teal #81c8be;
+@define-color sky #99d1db;
+@define-color sapphire #85c1dc;
+@define-color blue #8caaee;
+@define-color lavender #babbf1;
+@define-color text #c6d0f5;
+@define-color subtext1 #b5bfe2;
+@define-color subtext0 #a5adce;
+@define-color overlay2 #949cbb;
+@define-color overlay1 #838ba7;
+@define-color overlay0 #737994;
+@define-color surface2 #626880;
+@define-color surface1 #51576d;
+@define-color surface0 #414559;
+@define-color base #303446;
+@define-color mantle #292c3c;
+@define-color crust #232634;
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "monospace";
+    font-size: 16px;
+    margin: 0px;
+    padding: 2px;
+    transition: none;
+}
+
+window#waybar {
+    /*background: #000000;*/
+    padding: 2px;
+    background-color: @base;
+    color: #000000;
+}
+
+#gamemode,
+#gamemode.running {
+    color: #808080;
+}
+
+/* Modül stilleri için genel ayarlar */
+/* Her modül için belirgin bir padding ve margin sıfırlama */
+#workspaces,
+#sway-mode,
+#battery,
+#clock,
+#wireplumber,
+#backlight,
+#window,
+#idle_inhibitor,
+#bluetooth,
+#power-profiles-daemon {
+    background-color: @crust;
+    padding: 4px; /* Modüller arasında dikey boşluk bırakmak için padding */
+    margin: 0px; /* Global margin ayarını ezmek için */
+    color: @teal;
+}
+
+/* Çalışma Alanları (Workspaces) Modülü */
+#workspaces button {
+    padding: 2px;
+    color: @subtext1;
+    margin: 0;
+}
+
+/* Aktif Çalışma Alanı */
+#workspaces button.active {
+    color: @mauve; /* Aktif çalışma alanı için beyaz */
+}
+
+/* Üzerine gelindiğinde (Hover) */
+#workspaces button:hover {
+    color: @teal;
+}
+
+/* Mod Modülü (Sway/Mode) */
+#sway-mode {
+    background: #64727d; /* Belirgin bir arkaplan rengi */
+    color: #ffffff; /* Beyaz metin */
+    font-weight: bold;
+}
+
+/* Pil Modülü */
+#battery {
+    /* Renklendirme format string içinde yapıldığı için burada sadece genel stil */
+}
+
+#battery.charging {
+    color: #8ccf7b; /* Yeşilimsi ton */
+}
+
+#battery.warning:not(.charging) {
+    color: #e6b950; /* Sarimsi ton */
+}
+
+#battery.critical:not(.charging) {
+    color: #fe8019; /* Portakal rengi tonu */
+    animation: blink 1s linear infinite alternate; /* Dikkat çekmesi için göz kırpma animasyonu */
+}
+
+/* Saat Modülü */
+#clock {
+    /* Ek stil gerekirse buraya eklenebilir */
+}
+
+/* Ses Modülü (Wireplumber) */
+#wireplumber {
+    /* Ek stil gerekirse buraya eklenebilir */
+}
+
+#wireplumber.muted {
+    color: #ff6666; /* Ses kapalıyken kırmızımsı ton */
+}
+
+/* Ekran Parlaklığı Modülü (Backlight) */
+#backlight {
+    /* Ek stil gerekirse buraya eklenebilir */
+}
+
+/* Pencere Başlığı Modülü (niri/window) */
+#niri-window {
+    font-style: italic; /* Pencere başlığı için italik stil */
+}
+
+/* Tooltip Stilleri (Modüllerin üzerine gelindiğinde çıkan bilgi kutucukları) */
+tooltip {
+    background: #1a1a1a; /* Waybar arka planıyla aynı koyu ton */
+    color: #dddddd; /* Waybar metin rengiyle aynı açık ton */
+    border: 1px solid #333333; /* Hafif koyu bir kenarlık */
+    border-radius: 4px; /* Hafif yuvarlatılmış köşeler */
+    padding: 5px;
+}
+
+button:hover {
+    box-shadow: none; /* Remove predefined box-shadow */
+    text-shadow: none; /* Remove predefined text-shadow */
+    background: none; /* Remove predefined background color (white) */
+    transition: none; /* Disable predefined animations */
+}
