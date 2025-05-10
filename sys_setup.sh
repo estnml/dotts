@@ -7,6 +7,7 @@ development_packages=(
     "nodejs"
     "pnpm"
     "rustup"
+    "android-tools"
 )
 
 
@@ -122,7 +123,7 @@ fi
 echo "toplam ${#unique_packages[@]} unique paket var: ${unique_packages[@]}"
 
 
-pacman -S --noconfirm "${unique_packages[@]}"
+pacman -S "${unique_packages[@]}"
 
 if [ $? -eq 0 ]; then
     echo "Paket kurulumu tamamlandi."
